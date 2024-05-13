@@ -12,7 +12,7 @@ form.addEventListener('submit', async (event) => {
     if (argumentText !== '') {
         try {
             // send the argument to the backend
-            const response = await fetch('http://localhost:8000', {
+            const response = await fetch('http://localhost:8000/process-argument', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
