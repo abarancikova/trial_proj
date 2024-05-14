@@ -1,0 +1,5 @@
+pip install transformers
+pip install scikit-learn
+pip install flask
+pip install torch 
+pip install transformers 

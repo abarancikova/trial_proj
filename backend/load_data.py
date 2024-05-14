@@ -10,9 +10,12 @@ def load_dataset(file_path):
 dataset = load_dataset('backend/dataset/arg_quality_rank_30k.csv')
 
 #split the dataset into features and target variable
-X = dataset.drop(columns=['WA', 'MACE-P', 'stance_WA', 'stance_WA_conf']) 
+X = dataset['argument']
 y = dataset['WA']
 
 #split the dataset into 80% train and 20% valid
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+
 
