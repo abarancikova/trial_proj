@@ -40,6 +40,7 @@ def prepare_data(X_train, X_val, y_train, y_val):
     return train_loader, val_loader
 
 # Fine-tune BERT model for regression
+# Prints out the progress for every epoch
 def fine_tune_bert_model(train_loader, val_loader):
     # Load pre-trained BERT model for classification
     model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=1)

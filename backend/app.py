@@ -1,7 +1,6 @@
 import torch
 from flask import Flask, request, jsonify
 from transformers import BertForSequenceClassification, BertTokenizer
-import torch.nn.functional as F
 
 # Create a Flask object
 app = Flask(__name__)
@@ -19,6 +18,9 @@ def add_cors_headers(response):
 app.after_request(add_cors_headers)
 
 @app.route('/process-argument', methods=['POST'])
+
+# Process the argument and call the evaluate function
+# Returns the quality score to the js file, throws an exeption if uncessful
 def process_argument():
     try:
         argument_text = request.json.get('argument')
@@ -27,6 +29,8 @@ def process_argument():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# Evaluates argument and fits the score to the range 0 to 1
+# Returns the value of the quality score
 def evaluate_argument(argument_text):
     # Tokenize the argument
     inputs = tokenizer(argument_text, return_tensors='pt')
